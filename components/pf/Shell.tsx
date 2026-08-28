@@ -31,7 +31,7 @@ export function Shell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col">
       <header className="sticky top-0 z-30 bg-[var(--primary)] text-white shadow-sm">
-        <div className="mx-auto max-w-5xl flex items-center justify-between px-4 py-3 gap-3">
+        <div className="mx-auto max-w-6xl flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3 gap-3">
           <Link href="/dashboard" className="flex items-center gap-2">
             <span className="flex h-8 w-8 items-center justify-center rounded-md bg-white/15 text-sm font-extrabold tracking-tight">
               PF
@@ -79,7 +79,7 @@ export function Shell({ children }: { children: ReactNode }) {
         <div className="tricolor-rule" />
       </header>
 
-      <main id="main-content" tabIndex={-1} className="flex-1 mx-auto w-full max-w-5xl px-4 py-6 pb-24 md:pb-6">
+      <main id="main-content" tabIndex={-1} className="flex-1 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-6 pb-24 md:pb-6">
         {children}
       </main>
 

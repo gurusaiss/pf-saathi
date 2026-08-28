@@ -63,7 +63,7 @@ export default function Home() {
   return (
     <>
       <header className="bg-[var(--surface)] border-b border-[var(--border)]">
-        <div className="mx-auto max-w-5xl flex items-center justify-between px-4 py-3 gap-3">
+        <div className="mx-auto max-w-6xl flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3 gap-3">
           <div className="flex items-center gap-2">
             <span className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--primary)] text-white text-sm font-extrabold tracking-tight">
               PF
@@ -87,7 +87,7 @@ export default function Home() {
           </div>
         </div>
         <nav className="bg-[var(--primary)]">
-          <div className="mx-auto max-w-5xl flex items-center gap-1 px-4 py-2 text-xs sm:text-sm font-semibold overflow-x-auto">
+          <div className="mx-auto max-w-6xl flex items-center gap-1 px-4 sm:px-6 lg:px-8 py-2 text-xs sm:text-sm font-semibold overflow-x-auto">
             <Link href="/learn" className="whitespace-nowrap rounded-md px-2.5 py-1 text-white/85 hover:bg-white/10 hover:text-white">
               Learn the basics
             </Link>
@@ -105,19 +105,19 @@ export default function Home() {
       </header>
 
       <main id="main-content" tabIndex={-1} className="flex-1">
-      <section className="mx-auto max-w-5xl px-4 pt-10 pb-6 sm:pt-16">
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-10 pb-6 sm:pt-16">
         <p className="eyebrow text-[var(--gold)]">
           Employees&apos; Provident Fund — made understandable
         </p>
-        <h1 className="mt-2 text-3xl sm:text-5xl font-extrabold text-[var(--primary)] leading-tight max-w-3xl">
+        <h1 className="mt-2 text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--primary)] leading-tight max-w-4xl">
           {t(lang, "Understand your PF. Find what's wrong. Know what to do next.")}
         </h1>
-        <p className="mt-4 max-w-2xl text-[var(--muted)] text-base sm:text-lg">
+        <p className="mt-4 max-w-3xl text-[var(--muted)] text-base sm:text-lg lg:text-xl">
           12% of your salary goes into EPF every month, and your employer adds 12% more. You&apos;ve
           had three jobs. Do you know where that money is?
         </p>
 
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl">
+        <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
           <Promise title={t(lang, "You will know what's yours")} />
           <Promise title={t(lang, "Your claim will not be rejected")} />
           <Promise title={t(lang, "You will know what it costs")} />
@@ -134,15 +134,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-4">
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <Link href="/learn" className="text-sm font-semibold text-[var(--primary)] underline underline-offset-2">
           New to PF? Start here →
         </Link>
       </section>
 
-      <section className="mx-auto max-w-5xl px-4 py-8">
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8">
         <h2 className="text-lg font-bold mb-4">{t(lang, "What do you need help with?")}</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           {SITUATIONS.map((s) => (
             <button
               key={s.label}
@@ -156,7 +156,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="login" className="mx-auto max-w-5xl px-4 py-8 grid grid-cols-1 md:grid-cols-2 gap-6 scroll-mt-24">
+      <section id="login" className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 md:grid-cols-2 gap-6 scroll-mt-24">
         <Card>
           <h3 className="font-bold mb-3">{t(lang, "Log in")}</h3>
           <form onSubmit={handleSubmit} className="space-y-3">
