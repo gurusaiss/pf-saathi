@@ -61,20 +61,54 @@ export default function Home() {
   }
 
   return (
-    <main id="main-content" tabIndex={-1} className="flex-1">
-      <section className="mx-auto max-w-5xl px-4 pt-10 pb-6 sm:pt-16">
-        <div className="flex items-center justify-between">
-          <p className="eyebrow text-[var(--gold)]">
-            PF Saathi
-          </p>
-          <button
-            onClick={() => setLang(lang === "en" ? "hi" : "en")}
-            className="rounded-lg border border-[var(--border)] px-2 py-1 text-xs font-semibold text-[var(--muted)] hover:bg-[var(--bg)]"
-            aria-label="Toggle language"
-          >
-            {lang === "en" ? "हिं" : "EN"}
-          </button>
+    <>
+      <header className="bg-[var(--surface)] border-b border-[var(--border)]">
+        <div className="mx-auto max-w-5xl flex items-center justify-between px-4 py-3 gap-3">
+          <div className="flex items-center gap-2">
+            <span className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--primary)] text-white text-sm font-extrabold tracking-tight">
+              PF
+            </span>
+            <span className="text-lg font-extrabold tracking-tight text-[var(--primary)]">PF Saathi</span>
+          </div>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <button
+              onClick={() => setLang(lang === "en" ? "hi" : "en")}
+              className="rounded-md border border-[var(--border)] px-2 py-1 text-xs font-semibold text-[var(--muted)] hover:bg-[var(--bg)]"
+              aria-label="Toggle language"
+            >
+              {lang === "en" ? "हिं" : "EN"}
+            </button>
+            <a
+              href="#login"
+              className="rounded-md border-[1.5px] border-[color:var(--primary)] px-3 py-1.5 text-xs sm:text-sm font-semibold text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition-colors"
+            >
+              Log in
+            </a>
+          </div>
         </div>
+        <nav className="bg-[var(--primary)]">
+          <div className="mx-auto max-w-5xl flex items-center gap-1 px-4 py-2 text-xs sm:text-sm font-semibold overflow-x-auto">
+            <Link href="/learn" className="whitespace-nowrap rounded-md px-2.5 py-1 text-white/85 hover:bg-white/10 hover:text-white">
+              Learn the basics
+            </Link>
+            <Link href="/survivor" className="whitespace-nowrap rounded-md px-2.5 py-1 text-white/85 hover:bg-white/10 hover:text-white">
+              Survivor support
+            </Link>
+            <button
+              onClick={() => tour.start()}
+              className="whitespace-nowrap rounded-md px-2.5 py-1 text-white/85 hover:bg-white/10 hover:text-white"
+            >
+              60-second judge tour
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <main id="main-content" tabIndex={-1} className="flex-1">
+      <section className="mx-auto max-w-5xl px-4 pt-10 pb-6 sm:pt-16">
+        <p className="eyebrow text-[var(--gold)]">
+          Employees&apos; Provident Fund — made understandable
+        </p>
         <h1 className="mt-2 text-3xl sm:text-5xl font-extrabold text-[var(--primary)] leading-tight max-w-3xl">
           {t(lang, "Understand your PF. Find what's wrong. Know what to do next.")}
         </h1>
@@ -122,7 +156,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-4 py-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <section id="login" className="mx-auto max-w-5xl px-4 py-8 grid grid-cols-1 md:grid-cols-2 gap-6 scroll-mt-24">
         <Card>
           <h3 className="font-bold mb-3">{t(lang, "Log in")}</h3>
           <form onSubmit={handleSubmit} className="space-y-3">
@@ -176,7 +210,8 @@ export default function Home() {
           </p>
         </Card>
       </section>
-    </main>
+      </main>
+    </>
   );
 }
 

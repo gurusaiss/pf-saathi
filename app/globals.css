@@ -112,8 +112,10 @@ h1, h2, h3 {
   font-variant-numeric: tabular-nums;
 }
 
-* {
-  border-color: var(--border);
+@layer base {
+  * {
+    border-color: var(--border);
+  }
 }
 
 /* Keyboard accessibility: a clearly visible focus ring for every interactive element */

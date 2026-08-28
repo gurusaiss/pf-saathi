@@ -37,8 +37,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        <DemoBanner />
         <A11yProvider>
+          <DemoBanner />
           <SessionProvider>
             <TourProvider>
               {children}
