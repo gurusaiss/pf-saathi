@@ -4,7 +4,7 @@ import Link from "next/link";
 type Variant = "primary" | "secondary" | "ghost";
 
 const variantClasses: Record<Variant, string> = {
-  primary: "bg-[var(--primary)] text-[var(--primary-fg)] hover:opacity-90",
+  primary: "bg-[var(--primary)] text-[var(--primary-fg)] hover:bg-[var(--primary-dark)]",
   secondary:
     "bg-[var(--surface)] text-[var(--primary)] border border-[var(--border)] hover:bg-[var(--bg)]",
   ghost: "text-[var(--primary)] hover:bg-[var(--bg)]",

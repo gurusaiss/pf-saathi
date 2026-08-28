@@ -9,14 +9,22 @@ import { personas } from "@/lib/mock/personas";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { t } from "@/lib/i18n";
+import {
+  SwapIcon,
+  AlertCircleIcon,
+  AlertTriangleIcon,
+  HeartIcon,
+  ReceiptIcon,
+  UserIcon,
+} from "@/components/pf/Icons";
 
 const SITUATIONS = [
-  { icon: "🔄", label: "I changed jobs", uan: "100200300401" },
-  { icon: "❌", label: "My claim was rejected", uan: "100200300402" },
-  { icon: "⚠️", label: "My contribution is missing", uan: "100200300403" },
-  { icon: "❤️", label: "Protect my family & nominee", uan: "100200300404" },
-  { icon: "🧾", label: "I don't understand my PF", uan: "100200300401" },
-  { icon: "👤", label: "Check my PF profile", uan: "100200300401" },
+  { Icon: SwapIcon, label: "I changed jobs", uan: "100200300401" },
+  { Icon: AlertCircleIcon, label: "My claim was rejected", uan: "100200300402" },
+  { Icon: AlertTriangleIcon, label: "My contribution is missing", uan: "100200300403" },
+  { Icon: HeartIcon, label: "Protect my family & nominee", uan: "100200300404" },
+  { Icon: ReceiptIcon, label: "I don't understand my PF", uan: "100200300401" },
+  { Icon: UserIcon, label: "Check my PF profile", uan: "100200300401" },
 ];
 
 export default function Home() {
@@ -56,7 +64,7 @@ export default function Home() {
     <main id="main-content" tabIndex={-1} className="flex-1">
       <section className="mx-auto max-w-5xl px-4 pt-10 pb-6 sm:pt-16">
         <div className="flex items-center justify-between">
-          <p className="text-sm font-semibold text-[var(--gold)] tracking-wide uppercase">
+          <p className="eyebrow text-[var(--gold)]">
             PF Saathi
           </p>
           <button
@@ -107,7 +115,7 @@ export default function Home() {
               onClick={() => handleSituation(s.uan)}
               className="text-left rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 hover:border-[var(--primary)] transition-colors"
             >
-              <span className="text-2xl">{s.icon}</span>
+              <s.Icon className="h-6 w-6 text-[var(--primary)]" strokeWidth={1.6} />
               <p className="mt-2 text-sm font-semibold">{t(lang, s.label)}</p>
             </button>
           ))}
