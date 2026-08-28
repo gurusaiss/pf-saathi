@@ -16,7 +16,7 @@ const siteUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "PF Saathi — Understand your PF, find what's wrong, know what to do next",
+  title: "PF Saathi | Understand your PF, find what's wrong, know what to do next",
   description:
     "A citizen-first layer over India's EPFO. Prototype with simulated data — not connected to EPFO.",
   openGraph: {

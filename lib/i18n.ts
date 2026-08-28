@@ -11,8 +11,9 @@ const DICT: Record<string, string> = {
   "Log out": "लॉग आउट",
 
   // Landing
-  "Understand your PF. Find what's wrong. Know what to do next.":
-    "अपने पीएफ को समझें। जानें कि क्या गलत है। जानें आगे क्या करना है।",
+  "Understand your PF.": "अपने पीएफ को समझें।",
+  "Find what's wrong.": "जानें कि क्या गलत है।",
+  "Know what to do next.": "जानें आगे क्या करना है।",
   "You will know what's yours": "आप जानेंगे कि आपका क्या है",
   "Your claim will not be rejected": "आपका दावा खारिज नहीं होगा",
   "You will know what it costs": "आप जानेंगे इसकी कीमत क्या है",
@@ -24,7 +25,7 @@ const DICT: Record<string, string> = {
   "I don't understand my PF": "मुझे अपना पीएफ समझ नहीं आता",
   "Check my PF profile": "मेरी पीएफ प्रोफ़ाइल जांचें",
   "Log in": "लॉग इन करें",
-  "Demo access — click to try instantly": "डेमो एक्सेस — तुरंत आज़माने के लिए क्लिक करें",
+  "Demo access | click to try instantly": "डेमो एक्सेस | तुरंत आज़माने के लिए क्लिक करें",
 
   // Dashboard
   "Here's your PF at a glance.": "यह रहा आपका पीएफ एक नज़र में।",

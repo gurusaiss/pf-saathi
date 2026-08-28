@@ -34,7 +34,7 @@ export default function Claims() {
     const segment = rule.fixRoute.replace("/fix/", "");
     if (FIX_ACTIONS[segment]) {
       applyFix(segment);
-      toast.show(`${FIX_TITLES[segment]} — ${FIX_DESCRIPTIONS[segment]}`);
+      toast.show(`${FIX_TITLES[segment]} | ${FIX_DESCRIPTIONS[segment]}`);
     }
   }
 

@@ -41,7 +41,7 @@ export default function Grievance() {
       {gap ? (
         <Card className="mb-6">
           <p className="font-semibold text-sm">
-            Missing contribution — {formatMonthYear(gap.month)}
+            Missing contribution | {formatMonthYear(gap.month)}
           </p>
           <p className="text-sm text-[var(--muted)] mt-1">
             A salary deduction was shown on your slip that month with no matching contribution in

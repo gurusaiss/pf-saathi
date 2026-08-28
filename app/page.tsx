@@ -136,10 +136,12 @@ export default function Home() {
         />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-12 sm:pt-16 sm:pb-16">
           <p className="eyebrow text-[var(--gold)]">
-            Employees&apos; Provident Fund — made understandable
+            Employees&apos; Provident Fund | made understandable
           </p>
           <h1 className="mt-2 text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight max-w-4xl">
-            {t(lang, "Understand your PF. Find what's wrong. Know what to do next.")}
+            <span className="block">{t(lang, "Understand your PF.")}</span>
+            <span className="block">{t(lang, "Find what's wrong.")}</span>
+            <span className="block">{t(lang, "Know what to do next.")}</span>
           </h1>
           <p className="mt-4 max-w-3xl text-white/80 text-base sm:text-lg lg:text-xl">
             12% of your salary goes into EPF every month, and your employer adds 12% more. You&apos;ve
@@ -158,7 +160,7 @@ export default function Home() {
               className="text-base px-6 py-3 !bg-[var(--gold)] !text-[#1A1400] hover:!brightness-110"
               onClick={() => tour.start()}
             >
-              ▶ Judge Mode — 60-second tour
+              ▶ Judge Mode | 60-second tour
             </Button>
             <Link href="/learn" className="text-sm font-semibold text-white underline underline-offset-4 decoration-white/40 hover:decoration-white">
               New to PF? Start here →
@@ -330,7 +332,7 @@ export default function Home() {
         </Card>
 
         <Card>
-          <h3 className="font-bold mb-3">{t(lang, "Demo access — click to try instantly")}</h3>
+          <h3 className="font-bold mb-3">{t(lang, "Demo access | click to try instantly")}</h3>
           <div className="space-y-2">
             {personas.map((p) => (
               <button
@@ -360,7 +362,7 @@ export default function Home() {
               PF
             </span>
             <span className="font-semibold text-white">PF Saathi</span>
-            <span className="opacity-60">— an unofficial hackathon prototype</span>
+            <span className="opacity-60">| an unofficial hackathon prototype</span>
           </div>
           <div className="flex items-center gap-4">
             <Link href="/learn" className="hover:text-white transition-colors">Learn</Link>
