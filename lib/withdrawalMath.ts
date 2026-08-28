@@ -1,5 +1,3 @@
-import { Persona } from "./mock/types";
-
 const INTEREST_RATE = 0.0825; // EPF declared rate, illustrative — verify against the current year's notified rate
 const RETIREMENT_AGE = 58;
 const EPS_PENSIONABLE_SALARY_CAP = 15000;
@@ -25,8 +23,13 @@ export interface TdsResult {
 // TDS on EPF withdrawal only applies if service is under 5 continuous years.
 // 10% if PAN is linked, higher (typically the maximum marginal rate) if not.
 // Form 15G/15H can bring it to nil if total income is below the taxable limit.
-export function estimateTds(persona: Persona, form15gFiled: boolean, panLinked: boolean): TdsResult {
-  const totalMonths = persona.serviceYears * 12 + persona.serviceMonths;
+export function estimateTds(
+  serviceYears: number,
+  serviceMonths: number,
+  form15gFiled: boolean,
+  panLinked: boolean
+): TdsResult {
+  const totalMonths = serviceYears * 12 + serviceMonths;
   const under5Years = totalMonths < 60;
 
   if (!under5Years) {
@@ -65,20 +68,23 @@ export interface PensionEstimate {
 // Pensionable Salary is capped at ₹15,000/month unless higher pension was specifically opted for.
 // Requires at least 10 years of service to be eligible for the monthly pension (else Form 10C
 // withdrawal benefit applies instead).
-export function estimatePension(persona: Persona, monthlyBasic: number): PensionEstimate {
-  const pensionableServiceYears = roundedPensionableService(persona.serviceYears, persona.serviceMonths);
+export function estimatePension(
+  serviceYears: number,
+  serviceMonths: number,
+  monthlyBasic: number
+): PensionEstimate {
+  const pensionableServiceYears = roundedPensionableService(serviceYears, serviceMonths);
   const pensionableSalary = Math.min(monthlyBasic, EPS_PENSIONABLE_SALARY_CAP);
-  const eligible = persona.serviceYears >= EPS_MIN_SERVICE_YEARS;
+  const eligible = serviceYears >= EPS_MIN_SERVICE_YEARS;
   const monthlyPension = eligible
     ? Math.round((pensionableSalary * pensionableServiceYears) / 70)
     : 0;
   return { eligible, pensionableSalary, pensionableServiceYears, monthlyPension };
 }
 
-// Approximates the member's monthly Basic+DA from their most recent contribution
+// Approximates a member's monthly Basic+DA from their most recent contribution
 // (contribution ≈ 12% of Basic+DA). Used only to illustrate the pension formula.
-export function approximateMonthlyBasic(persona: Persona): number {
-  const latest = persona.contributions[persona.contributions.length - 1];
-  if (!latest || latest.amount === 0) return 0;
-  return Math.round(latest.amount / 0.12);
+export function approximateMonthlyBasic(latestContributionAmount: number): number {
+  if (!latestContributionAmount) return 0;
+  return Math.round(latestContributionAmount / 0.12);
 }

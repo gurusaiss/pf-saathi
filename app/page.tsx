@@ -110,6 +110,9 @@ export default function Home() {
             <Link href="/faq" className="whitespace-nowrap rounded-md px-2.5 py-1 text-white/85 hover:bg-white/10 hover:text-white">
               FAQ
             </Link>
+            <Link href="/calculator" className="whitespace-nowrap rounded-md px-2.5 py-1 text-white/85 hover:bg-white/10 hover:text-white">
+              Tax & Pension Calculator
+            </Link>
             <button
               onClick={() => tour.start()}
               className="whitespace-nowrap rounded-md px-2.5 py-1 text-white/85 hover:bg-white/10 hover:text-white"
@@ -253,10 +256,10 @@ export default function Home() {
           {audience === "pensioner" && (
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <AudienceTile
-                title="Estimate your EPS pension"
-                desc="See the formula and your own projected monthly pension at 58."
-                cta="Open Withdrawal Advisor →"
-                onClick={() => openAs("100200300404", "/withdraw")}
+                title="Estimate your pension — no login"
+                desc="Enter your own salary and service years to see the EPS formula worked out."
+                cta="Open calculator →"
+                onClick={() => router.push("/calculator")}
               />
               <AudienceTile
                 title="Survivor claim guide"
@@ -363,6 +366,7 @@ export default function Home() {
             <Link href="/learn" className="hover:text-white transition-colors">Learn</Link>
             <Link href="/survivor" className="hover:text-white transition-colors">Survivor support</Link>
             <Link href="/faq" className="hover:text-white transition-colors">FAQ</Link>
+            <Link href="/calculator" className="hover:text-white transition-colors">Calculator</Link>
             <a href="https://www.epfindia.gov.in" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
               Real EPFO site ↗
             </a>

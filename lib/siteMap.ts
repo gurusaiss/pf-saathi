@@ -102,6 +102,13 @@ export const SITE_ROUTES: SiteRoute[] = [
     requiresLogin: false,
   },
   {
+    path: "/calculator",
+    label: "Tax & Pension Calculator",
+    description: "Estimate withdrawal TDS and your EPS pension — no login needed",
+    keywords: ["calculator", "calculate", "tax", "tds", "pension calculator"],
+    requiresLogin: false,
+  },
+  {
     path: "/",
     label: "Login page",
     description: "Sign in or try a demo account",

@@ -34,14 +34,15 @@ export default function Withdraw() {
   const panLinked = overrides.panLinked ?? persona.panLinked;
   const form15gFiled = overrides.form15gFiled ?? false;
 
-  const tds = estimateTds(persona, form15gFiled, panLinked);
+  const tds = estimateTds(persona.serviceYears, persona.serviceMonths, form15gFiled, panLinked);
   const tdsAmount = Math.round(amount * tds.rate);
   const netReceived = amount - tdsAmount;
   const lostAtRetirement = futureValueLost(amount, persona.age);
   const years = yearsToRetirement(persona.age);
 
-  const monthlyBasic = approximateMonthlyBasic(persona);
-  const pension = estimatePension(persona, monthlyBasic);
+  const latestContribution = persona.contributions[persona.contributions.length - 1];
+  const monthlyBasic = approximateMonthlyBasic(latestContribution?.amount ?? 0);
+  const pension = estimatePension(persona.serviceYears, persona.serviceMonths, monthlyBasic);
 
   return (
     <Shell>
