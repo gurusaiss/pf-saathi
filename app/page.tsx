@@ -63,7 +63,7 @@ export default function Home() {
   return (
     <>
       <header className="bg-[var(--surface)] border-b border-[var(--border)]">
-        <div className="mx-auto max-w-6xl flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3 gap-3">
+        <div className="mx-auto max-w-7xl flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3 gap-3">
           <div className="flex items-center gap-2">
             <span className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--primary)] text-white text-sm font-extrabold tracking-tight">
               PF
@@ -87,7 +87,7 @@ export default function Home() {
           </div>
         </div>
         <nav className="bg-[var(--primary)]">
-          <div className="mx-auto max-w-6xl flex items-center gap-1 px-4 sm:px-6 lg:px-8 py-2 text-xs sm:text-sm font-semibold overflow-x-auto">
+          <div className="mx-auto max-w-7xl flex items-center gap-1 px-4 sm:px-6 lg:px-8 py-2 text-xs sm:text-sm font-semibold overflow-x-auto">
             <Link href="/learn" className="whitespace-nowrap rounded-md px-2.5 py-1 text-white/85 hover:bg-white/10 hover:text-white">
               Learn the basics
             </Link>
@@ -105,58 +105,78 @@ export default function Home() {
       </header>
 
       <main id="main-content" tabIndex={-1} className="flex-1">
-      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-10 pb-6 sm:pt-16">
-        <p className="eyebrow text-[var(--gold)]">
-          Employees&apos; Provident Fund — made understandable
-        </p>
-        <h1 className="mt-2 text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--primary)] leading-tight max-w-4xl">
-          {t(lang, "Understand your PF. Find what's wrong. Know what to do next.")}
-        </h1>
-        <p className="mt-4 max-w-3xl text-[var(--muted)] text-base sm:text-lg lg:text-xl">
-          12% of your salary goes into EPF every month, and your employer adds 12% more. You&apos;ve
-          had three jobs. Do you know where that money is?
-        </p>
+      <section className="relative overflow-hidden bg-[linear-gradient(135deg,var(--primary)_0%,var(--primary-dark)_100%)]">
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 1px 1px, white 1.5px, transparent 0)",
+            backgroundSize: "28px 28px",
+          }}
+        />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-12 sm:pt-16 sm:pb-16">
+          <p className="eyebrow text-[var(--gold)]">
+            Employees&apos; Provident Fund — made understandable
+          </p>
+          <h1 className="mt-2 text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight max-w-4xl">
+            {t(lang, "Understand your PF. Find what's wrong. Know what to do next.")}
+          </h1>
+          <p className="mt-4 max-w-3xl text-white/80 text-base sm:text-lg lg:text-xl">
+            12% of your salary goes into EPF every month, and your employer adds 12% more. You&apos;ve
+            had three jobs. Do you know where that money is?
+          </p>
 
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <Promise title={t(lang, "You will know what's yours")} />
-          <Promise title={t(lang, "Your claim will not be rejected")} />
-          <Promise title={t(lang, "You will know what it costs")} />
-        </div>
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <Promise title={t(lang, "You will know what's yours")} />
+            <Promise title={t(lang, "Your claim will not be rejected")} />
+            <Promise title={t(lang, "You will know what it costs")} />
+          </div>
 
-        <div className="mt-8">
-          <Button
-            variant="primary"
-            className="text-base px-6 py-3"
-            onClick={() => tour.start()}
-          >
-            ▶ Judge Mode — 60-second tour
-          </Button>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <Button
+              variant="primary"
+              className="text-base px-6 py-3 !bg-[var(--gold)] !text-[#1A1400] hover:!brightness-110"
+              onClick={() => tour.start()}
+            >
+              ▶ Judge Mode — 60-second tour
+            </Button>
+            <Link href="/learn" className="text-sm font-semibold text-white underline underline-offset-4 decoration-white/40 hover:decoration-white">
+              New to PF? Start here →
+            </Link>
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <Link href="/learn" className="text-sm font-semibold text-[var(--primary)] underline underline-offset-2">
-          New to PF? Start here →
-        </Link>
+      <section className="bg-[var(--surface)] border-b border-[var(--border)]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+          <Stat value="24%" label="of your salary saved every month, combined" />
+          <Stat value="10" label="rejection reasons checked before you file" />
+          <Stat value="₹7L" label="EDLI cover most members never claim" />
+          <Stat value="0" label="rupees this prototype ever touches for real" />
+        </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8">
-        <h2 className="text-lg font-bold mb-4">{t(lang, "What do you need help with?")}</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+        <h2 className="text-lg sm:text-xl font-bold mb-1">{t(lang, "What do you need help with?")}</h2>
+        <p className="text-sm text-[var(--muted)] mb-5">Pick what matches your situation — we&apos;ll pull up an account that shows exactly it.</p>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
           {SITUATIONS.map((s) => (
             <button
               key={s.label}
               onClick={() => handleSituation(s.uan)}
-              className="text-left rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 hover:border-[var(--primary)] transition-colors"
+              className="group text-left rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 hover:border-[var(--primary)] hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
             >
-              <s.Icon className="h-6 w-6 text-[var(--primary)]" strokeWidth={1.6} />
-              <p className="mt-2 text-sm font-semibold">{t(lang, s.label)}</p>
+              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--bg)] group-hover:bg-[var(--primary)] transition-colors duration-200">
+                <s.Icon className="h-5 w-5 text-[var(--primary)] group-hover:text-white transition-colors duration-200" strokeWidth={1.6} />
+              </span>
+              <p className="mt-3 text-sm font-semibold">{t(lang, s.label)}</p>
             </button>
           ))}
         </div>
       </section>
 
-      <section id="login" className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 md:grid-cols-2 gap-6 scroll-mt-24">
+      <section id="login" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 md:grid-cols-2 gap-6 scroll-mt-24">
         <Card>
           <h3 className="font-bold mb-3">{t(lang, "Log in")}</h3>
           <form onSubmit={handleSubmit} className="space-y-3">
@@ -195,7 +215,7 @@ export default function Home() {
               <button
                 key={p.uan}
                 onClick={() => handleSituation(p.uan)}
-                className="w-full text-left rounded-xl border border-[var(--border)] p-3 hover:border-[var(--primary)] transition-colors"
+                className="w-full text-left rounded-xl border border-[var(--border)] p-3 hover:border-[var(--primary)] hover:bg-[var(--bg)] transition-colors"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-semibold text-sm">{p.name}</span>
@@ -211,14 +231,45 @@ export default function Home() {
         </Card>
       </section>
       </main>
+
+      <footer className="bg-[var(--primary-dark)] text-white/70">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm">
+          <div className="flex items-center gap-2">
+            <span className="flex h-7 w-7 items-center justify-center rounded-md bg-white/10 text-white text-xs font-extrabold">
+              PF
+            </span>
+            <span className="font-semibold text-white">PF Saathi</span>
+            <span className="opacity-60">— an unofficial hackathon prototype</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <Link href="/learn" className="hover:text-white transition-colors">Learn</Link>
+            <Link href="/survivor" className="hover:text-white transition-colors">Survivor support</Link>
+            <a href="https://www.epfindia.gov.in" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+              Real EPFO site ↗
+            </a>
+          </div>
+        </div>
+      </footer>
     </>
   );
 }
 
 function Promise({ title }: { title: string }) {
   return (
-    <div className="rounded-xl bg-[var(--surface)] border border-[var(--border)] px-4 py-3">
+    <div className="rounded-xl bg-white px-4 py-3 flex items-center gap-2.5 shadow-sm">
+      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--ok-bg)] text-[var(--ok)] text-xs font-bold">
+        ✓
+      </span>
       <p className="text-sm font-semibold text-[var(--primary)]">{title}</p>
+    </div>
+  );
+}
+
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <div>
+      <p className="text-2xl sm:text-3xl font-extrabold text-[var(--primary)] tabular-nums">{value}</p>
+      <p className="mt-1 text-xs sm:text-sm text-[var(--muted)]">{label}</p>
     </div>
   );
 }
