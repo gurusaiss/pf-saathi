@@ -50,18 +50,22 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     setHydrated(true);
   }, []);
 
-  function persistOverrides(uan: string, next: ProfileOverrides) {
-    setOverrides(next);
+  // Persist to localStorage whenever the live overrides change, rather than
+  // writing inline wherever they're set — that would mean computing the next
+  // value from the `overrides` closure, which goes stale if two fixes are
+  // applied before a re-render (e.g. two quick clicks) and silently drops one.
+  useEffect(() => {
+    if (!persona) return;
     try {
-      localStorage.setItem(overridesKey(uan), JSON.stringify(next));
+      localStorage.setItem(overridesKey(persona.uan), JSON.stringify(overrides));
     } catch {}
-  }
+  }, [persona, overrides]);
 
   function login(uan: string, password: string): boolean {
     const p = getPersonaByUan(uan.trim());
     if (!p || p.password !== password) return false;
     setPersona(p);
-    persistOverrides(p.uan, {}); // fresh session — always starts from the real baseline
+    setOverrides({}); // fresh session — always starts from the real baseline
     try {
       localStorage.setItem(UAN_KEY, p.uan);
     } catch {}
@@ -76,19 +80,14 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     } catch {}
   }
 
-  const applyFix = useCallback(
-    (fixType: string) => {
-      if (!persona) return;
-      const field = FIX_ACTIONS[fixType];
-      if (!field) return;
-      persistOverrides(persona.uan, { ...overrides, [field]: true });
-    },
-    [persona, overrides]
-  );
+  const applyFix = useCallback((fixType: string) => {
+    const field = FIX_ACTIONS[fixType];
+    if (!field) return;
+    setOverrides((prev) => ({ ...prev, [field]: true }));
+  }, []);
 
   function resetOverrides() {
-    if (!persona) return;
-    persistOverrides(persona.uan, {});
+    setOverrides({});
   }
 
   function updateLang(l: "en" | "hi") {

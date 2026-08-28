@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Shell } from "@/components/pf/Shell";
 import { PageSkeleton } from "@/components/pf/PageSkeleton";
@@ -26,17 +26,25 @@ export default function Family() {
   const [active, setActive] = useState(false);
   const toast = useToast(5000);
 
+  // Deriving "done" from the settled step value (rather than checking it inline
+  // in the click handler) means this is correct even if two clicks land before a
+  // re-render — each click only ever queues a plain increment, and this effect
+  // is the single place that decides the wizard is complete. Must stay above
+  // the early return below so hook order never changes across renders.
+  useEffect(() => {
+    if (!active || step < STEPS.length) return;
+    applyFix("nomination");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setActive(false);
+    setStep(0);
+    toast.show("e-Nomination filed. Your family's EDLI and survivor pension claim is now protected.");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active, step]);
+
   if (!persona || !rules) return <Shell><PageSkeleton /></Shell>;
 
   const nominationRule = rules.results.find((r) => r.id === "nomination")!;
   const filed = nominationRule.severity === "pass";
-
-  function finish() {
-    applyFix("nomination");
-    setActive(false);
-    setStep(0);
-    toast.show("e-Nomination filed. Your family's EDLI and survivor pension claim is now protected.");
-  }
 
   return (
     <Shell>
@@ -82,11 +90,11 @@ export default function Family() {
               />
             ))}
           </div>
-          <p className="font-semibold text-sm mb-1">Step {step + 1} of {STEPS.length}</p>
-          <p className="text-sm text-[var(--muted)] mb-4">{STEPS[step]}</p>
-          <Button
-            onClick={() => (step < STEPS.length - 1 ? setStep(step + 1) : finish())}
-          >
+          <p className="font-semibold text-sm mb-1">
+            Step {Math.min(step, STEPS.length - 1) + 1} of {STEPS.length}
+          </p>
+          <p className="text-sm text-[var(--muted)] mb-4">{STEPS[Math.min(step, STEPS.length - 1)]}</p>
+          <Button onClick={() => setStep((s) => s + 1)}>
             {step < STEPS.length - 1 ? "Continue" : "Confirm e-Nomination"}
           </Button>
         </Card>
