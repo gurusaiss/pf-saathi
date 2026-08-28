@@ -24,7 +24,7 @@ export function AccessibilityMenu() {
   }, []);
 
   return (
-    <div ref={ref} className="fixed bottom-20 right-4 z-40 md:bottom-6">
+    <div ref={ref} className="fixed bottom-20 left-4 z-40 md:bottom-6">
       {open && (
         <div className="mb-2 w-64 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 shadow-2xl">
           <p className="text-xs font-bold uppercase tracking-wide text-[var(--muted)] mb-2">

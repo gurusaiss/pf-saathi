@@ -6,6 +6,7 @@ import { A11yProvider } from "@/lib/a11y";
 import { DemoBanner } from "@/components/pf/DemoBanner";
 import { JudgeTourOverlay } from "@/components/pf/JudgeTourOverlay";
 import { AccessibilityMenu } from "@/components/pf/AccessibilityMenu";
+import { AssistantWidget } from "@/components/pf/AssistantWidget";
 
 // Vercel injects VERCEL_URL automatically at build/runtime; this resolves the
 // OG/Twitter image URLs correctly once deployed without any manual config.
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               {children}
               <JudgeTourOverlay />
               <AccessibilityMenu />
+              <AssistantWidget />
             </TourProvider>
           </SessionProvider>
         </A11yProvider>

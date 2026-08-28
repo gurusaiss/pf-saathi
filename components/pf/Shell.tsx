@@ -55,6 +55,9 @@ export function Shell({ children }: { children: ReactNode }) {
             ))}
           </nav>
           <div className="flex items-center gap-2 sm:gap-3">
+            <Link href="/faq" className="hidden sm:inline text-xs font-bold text-white/85 hover:text-white">
+              FAQ
+            </Link>
             <button
               onClick={() => setLang(lang === "en" ? "hi" : "en")}
               className="rounded-md border border-white/30 px-2 py-1 text-xs font-bold text-white hover:bg-white/10"
